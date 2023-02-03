@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import '../../core/config/env/env.dart';
+import '../../core/widgets/delivery_button.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -12,12 +16,14 @@ class SplashPage extends StatelessWidget {
       body: Column(
         children: [
           Container(),
-          ElevatedButton(
+          DeliveryButtonWidget(
+            width: 200,
+            height: 200,
+            label: Env.instance['backend_base_url'] ?? '',
             onPressed: () {},
-            child: const Text('Teste'),
           ),
           TextFormField(
-            decoration: InputDecoration(labelText: 'teste'),
+            decoration: const InputDecoration(labelText: 'teste'),
           ),
         ],
       ),
