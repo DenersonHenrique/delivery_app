@@ -22,6 +22,6 @@ class HomeRouter {
             ),
           ),
         ],
-        child: HomePage(),
+        child: const HomePage(),
       );
 }

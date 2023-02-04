@@ -1,6 +1,8 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
-import 'package:delivery_app/app/repositories/products/products_repository.dart';
 import '../../pages/home/home_state.dart';
+import '../../repositories/products/products_repository.dart';
 
 class HomeController extends Cubit<HomeState> {
   final ProductsRepository _productsRepository;
@@ -14,6 +16,7 @@ class HomeController extends Cubit<HomeState> {
       state.copyWith(status: HomeStateStatus.loading),
     );
     try {
+      await Future.delayed(const Duration(seconds: 2));
       final products = await _productsRepository.findAllProducts();
       emit(
         state.copyWith(
@@ -21,8 +24,14 @@ class HomeController extends Cubit<HomeState> {
           products: products,
         ),
       );
-    } on Exception catch (error) {
-      // TODO
+    } catch (error, stack) {
+      log('Erro ao buscar produtos.', error: error, stackTrace: stack);
+      emit(
+        state.copyWith(
+          status: HomeStateStatus.error,
+          errorMessage: 'Erro ao buscar produtos.',
+        ),
+      );
     }
   }
 }
