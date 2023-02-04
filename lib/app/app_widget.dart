@@ -1,9 +1,10 @@
-import 'package:delivery_app/app/pages/home/home_router.dart';
 import 'package:flutter/material.dart';
 
 import 'core/di/provider.dart';
-import 'pages/splash/splash.dart';
+import 'pages/home/home_router.dart';
+import 'pages/splash/splash_page.dart';
 import 'core/ui/theme/theme_config.dart';
+import 'pages/product_detail/product_detail_router.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class AppWidget extends StatelessWidget {
         routes: {
           '/': (context) => const SplashPage(),
           '/home': (context) => HomeRouter.page,
+          '/product-detail': (context) => ProductDetailRouter.page,
         },
       ),
     );

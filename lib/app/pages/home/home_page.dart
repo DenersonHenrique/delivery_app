@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'home_state.dart';
 import 'home_controller.dart';
-import 'widgets/product_tile.dart';
+import 'widgets/product_tile_widget.dart';
 import '../../core/widgets/app_bar_widget.dart';
 import '../../core/ui/base_state/base_state.dart';
 

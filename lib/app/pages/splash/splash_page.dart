@@ -1,8 +1,8 @@
-import 'package:delivery_app/app/core/ui/helpers/size_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/config/env/env.dart';
-import '../../core/widgets/delivery_button.dart';
+import '../../core/ui/helpers/size_extensions.dart';
+import '../../core/widgets/delivery_button_widget.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
