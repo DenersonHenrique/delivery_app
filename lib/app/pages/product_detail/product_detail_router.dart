@@ -16,7 +16,10 @@ class ProductDetailRouter {
         builder: (context, child) {
           final arguments = ModalRoute.of(context)!.settings.arguments
               as Map<String, dynamic>;
-          return ProductDetailPage(product: arguments['product']);
+          return ProductDetailPage(
+            product: arguments['product'],
+            order: arguments['order'],
+          );
         },
       );
 }
