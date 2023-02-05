@@ -6,6 +6,7 @@ import 'home_controller.dart';
 import 'widgets/product_tile_widget.dart';
 import '../../core/widgets/app_bar_widget.dart';
 import '../../core/ui/base_state/base_state.dart';
+import 'widgets/shopping_bag_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,7 +29,7 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
         builder: (context, state) {
           return Column(
             children: [
-              Text(state.shoppingBag.length.toString()),
+              // Text(state.shoppingBag.length.toString()),
               Expanded(
                 child: ListView.builder(
                   itemCount: state.products.length,
@@ -42,6 +43,10 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
                     );
                   },
                 ),
+              ),
+              Visibility(
+                visible: state.shoppingBag.isNotEmpty,
+                child: ShoppingBagWidget(bag: state.shoppingBag),
               ),
             ],
           );
