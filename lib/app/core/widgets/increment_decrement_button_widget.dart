@@ -3,6 +3,7 @@ import '../../core/ui/styles/colors_app.dart';
 import '../../core/ui/styles/text_styles.dart';
 
 class IncrementDecrementButtonWidget extends StatelessWidget {
+  final bool _compact;
   final int amount;
   final VoidCallback incrementTap;
   final VoidCallback decrementTap;
@@ -12,11 +13,19 @@ class IncrementDecrementButtonWidget extends StatelessWidget {
     required this.amount,
     required this.incrementTap,
     required this.decrementTap,
-  });
+  }) : _compact = false;
+
+  const IncrementDecrementButtonWidget.compact({
+    super.key,
+    required this.amount,
+    required this.incrementTap,
+    required this.decrementTap,
+  }) : _compact = true;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(7),
@@ -31,7 +40,7 @@ class IncrementDecrementButtonWidget extends StatelessWidget {
               child: Text(
                 '-',
                 style: context.textStyles.textMedium.copyWith(
-                  fontSize: 22,
+                  fontSize: _compact ? 15 : 22,
                   color: Colors.grey,
                 ),
               ),
@@ -40,7 +49,7 @@ class IncrementDecrementButtonWidget extends StatelessWidget {
           Text(
             amount.toString(),
             style: context.textStyles.textMedium.copyWith(
-              fontSize: 18,
+              fontSize: _compact ? 16 : 18,
               color: context.colors.secondary,
             ),
           ),
@@ -51,7 +60,7 @@ class IncrementDecrementButtonWidget extends StatelessWidget {
               child: Text(
                 '+',
                 style: context.textStyles.textMedium.copyWith(
-                  fontSize: 22,
+                  fontSize: _compact ? 15 : 22,
                   color: Colors.grey,
                 ),
               ),

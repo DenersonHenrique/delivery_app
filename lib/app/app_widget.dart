@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'core/di/provider.dart';
 import 'pages/home/home_router.dart';
+import 'pages/order/order_page.dart';
 import 'pages/auth/login_router.dart';
 import 'pages/splash/splash_page.dart';
 import 'core/ui/theme/theme_config.dart';
@@ -21,6 +22,7 @@ class AppWidget extends StatelessWidget {
         routes: {
           '/': (context) => const SplashPage(),
           '/home': (context) => HomeRouter.page,
+          '/order': (context) => const OrderPage(),
           '/login': (context) => LoginRouter.page,
           '/register': (context) => RegisterRouter.page,
           '/product-detail': (context) => ProductDetailRouter.page,
