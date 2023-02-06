@@ -20,6 +20,7 @@ class ShoppingBagWidget extends StatelessWidget {
     if (!storage.containsKey('accessToken')) {
       // Envio para login
       final loginResult = await navigator.pushNamed('/login');
+      print(loginResult);
     }
     // Envio para order
   }

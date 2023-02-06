@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'core/di/provider.dart';
-import 'pages/auth/login_page.dart';
 import 'pages/home/home_router.dart';
+import 'pages/auth/login_router.dart';
 import 'pages/splash/splash_page.dart';
 import 'core/ui/theme/theme_config.dart';
 import 'pages/register/resgiter_router.dart';
@@ -21,7 +21,7 @@ class AppWidget extends StatelessWidget {
         routes: {
           '/': (context) => const SplashPage(),
           '/home': (context) => HomeRouter.page,
-          '/login': (context) => const LoginPage(),
+          '/login': (context) => LoginRouter.page,
           '/register': (context) => RegisterRouter.page,
           '/product-detail': (context) => ProductDetailRouter.page,
         },
