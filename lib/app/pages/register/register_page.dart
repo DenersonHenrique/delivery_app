@@ -4,6 +4,7 @@ import 'package:validatorless/validatorless.dart';
 
 import 'register_state.dart';
 import 'register_controller.dart';
+import '../../core/constants/app_string.dart';
 import '../../core/ui/styles/text_styles.dart';
 import '../../core/widgets/app_bar_widget.dart';
 import '../../core/ui/base_state/base_state.dart';
@@ -59,36 +60,43 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Cadastro',
+                    AppString.registerTitleText,
                     style: context.textStyles.textTitle,
                   ),
                   Text(
-                    'Preencha os campos abaixo para criar o  seu cadastro.',
-                    style:
-                        context.textStyles.textMedium.copyWith(fontSize: 18.0),
+                    AppString.registerSubtitleText,
+                    style: context.textStyles.textMedium.copyWith(
+                      fontSize: 18.0,
+                    ),
                   ),
                   const SizedBox(
                     height: 30,
                   ),
                   TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Nome',
+                    decoration: InputDecoration(
+                      labelText: AppString.nameLabel,
                     ),
                     controller: _nameEditingController,
-                    validator: Validatorless.required('Nome obrigatório'),
+                    validator: Validatorless.required(
+                      AppString.nameRequiredValidation,
+                    ),
                   ),
                   const SizedBox(
                     height: 30,
                   ),
                   TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'E-mail',
+                    decoration: InputDecoration(
+                      labelText: AppString.emailLabel,
                     ),
                     controller: _emailEditingController,
                     validator: Validatorless.multiple(
                       [
-                        Validatorless.required('E-mail obrigatório'),
-                        Validatorless.email('E-mail inválido'),
+                        Validatorless.required(
+                          AppString.emailRequiredValidation,
+                        ),
+                        Validatorless.email(
+                          AppString.emailFormateValidation,
+                        ),
                       ],
                     ),
                   ),
@@ -97,8 +105,8 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                   ),
                   TextFormField(
                     obscureText: true,
-                    decoration: const InputDecoration(
-                      labelText: 'Senha',
+                    decoration: InputDecoration(
+                      labelText: AppString.passwordLabel,
                     ),
                     controller: _passwordEditingController,
                     validator: Validatorless.multiple(
@@ -142,7 +150,7 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                           );
                         }
                       },
-                      label: 'CADASTRAR',
+                      label: AppString.registerBtnLabel,
                       width: double.infinity,
                     ),
                   ),

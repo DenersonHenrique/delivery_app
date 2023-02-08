@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/config/env/env.dart';
+import '../../core/constants/app_string.dart';
+import '../../core/constants/asset_images.dart';
 import '../../core/ui/helpers/size_extensions.dart';
 import '../../core/widgets/delivery_button_widget.dart';
 
@@ -19,7 +21,7 @@ class SplashPage extends StatelessWidget {
               child: SizedBox(
                 width: context.screenWidth,
                 child: Image.asset(
-                  'assets/images/lanche.png',
+                  AssetImages.snackSplash,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -30,7 +32,7 @@ class SplashPage extends StatelessWidget {
                   SizedBox(
                     height: context.percentHeight(0.30),
                   ),
-                  Image.asset('assets/images/logo.png'),
+                  Image.asset(AssetImages.logo),
                   const SizedBox(
                     height: 80,
                   ),
@@ -38,7 +40,7 @@ class SplashPage extends StatelessWidget {
                     onPressed: () => Navigator.of(context).popAndPushNamed(
                       '/home',
                     ),
-                    label: 'ACESSAR',
+                    label: AppString.accessBtnLabel,
                     width: context.percentWidth(0.60),
                     height: 35,
                   ),
