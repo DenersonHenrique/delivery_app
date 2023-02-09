@@ -111,8 +111,13 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                     controller: _passwordEditingController,
                     validator: Validatorless.multiple(
                       [
-                        Validatorless.required('Senha obrigatória'),
-                        Validatorless.min(6, 'Mínimo de 6 caracteres'),
+                        Validatorless.required(
+                          AppString.passwordRequiredValidation,
+                        ),
+                        Validatorless.min(
+                          6,
+                          AppString.passwordLengthValidation,
+                        ),
                       ],
                     ),
                   ),
@@ -121,15 +126,17 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                   ),
                   TextFormField(
                     obscureText: true,
-                    decoration: const InputDecoration(
-                      labelText: 'Confirmar senha',
+                    decoration: InputDecoration(
+                      labelText: AppString.confirmPasswordLabel,
                     ),
                     validator: Validatorless.multiple(
                       [
-                        Validatorless.required('Confirmar senha obrigatória'),
+                        Validatorless.required(
+                          AppString.confirmPasswordValidation,
+                        ),
                         Validatorless.compare(
                           _passwordEditingController,
-                          'As senhas inseridas são diferentes',
+                          AppString.comparePasswordValidation,
                         ),
                       ],
                     ),
