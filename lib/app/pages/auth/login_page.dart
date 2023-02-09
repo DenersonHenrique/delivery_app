@@ -1,8 +1,8 @@
-import 'package:delivery_app/app/pages/auth/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:validatorless/validatorless.dart';
 
+import 'login_state.dart';
 import 'login_controller.dart';
 import '../../core/ui/styles/text_styles.dart';
 import '../../core/widgets/app_bar_widget.dart';
@@ -17,6 +17,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends BaseState<LoginPage, LoginController> {
+  bool _showPassword = false;
   final _formKey = GlobalKey<FormState>();
   final _emailEditingController = TextEditingController();
   final _passwordEditingController = TextEditingController();
@@ -83,12 +84,28 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
                       const SizedBox(
                         height: 30,
                       ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          labelText: 'Senha',
+                      StatefulBuilder(
+                        builder: (context, setState) => TextFormField(
+                          obscureText: !_showPassword,
+                          decoration: InputDecoration(
+                            labelText: 'Senha',
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _showPassword = !_showPassword;
+                                });
+                              },
+                              icon: Icon(
+                                _showPassword
+                                    ? Icons.visibility_off_rounded
+                                    : Icons.visibility_rounded,
+                              ),
+                            ),
+                          ),
+                          controller: _passwordEditingController,
+                          validator:
+                              Validatorless.required('Senha obrigatória'),
                         ),
-                        controller: _passwordEditingController,
-                        validator: Validatorless.required('Senha obrigatória'),
                       ),
                       const SizedBox(
                         height: 50,

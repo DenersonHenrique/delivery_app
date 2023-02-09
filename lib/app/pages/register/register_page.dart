@@ -18,6 +18,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
+  bool _showPassword = false;
   final _formKey = GlobalKey<FormState>();
   final _nameEditingController = TextEditingController();
   final _emailEditingController = TextEditingController();
@@ -103,42 +104,70 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                   const SizedBox(
                     height: 30,
                   ),
-                  TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      labelText: AppString.passwordLabel,
-                    ),
-                    controller: _passwordEditingController,
-                    validator: Validatorless.multiple(
-                      [
-                        Validatorless.required(
-                          AppString.passwordRequiredValidation,
+                  StatefulBuilder(
+                    builder: (context, setState) => TextFormField(
+                      obscureText: !_showPassword,
+                      decoration: InputDecoration(
+                        labelText: AppString.passwordLabel,
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _showPassword = !_showPassword;
+                            });
+                          },
+                          icon: Icon(
+                            _showPassword
+                                ? Icons.visibility_off_rounded
+                                : Icons.visibility_rounded,
+                          ),
                         ),
-                        Validatorless.min(
-                          6,
-                          AppString.passwordLengthValidation,
-                        ),
-                      ],
+                      ),
+                      controller: _passwordEditingController,
+                      validator: Validatorless.multiple(
+                        [
+                          Validatorless.required(
+                            AppString.passwordRequiredValidation,
+                          ),
+                          Validatorless.min(
+                            6,
+                            AppString.passwordLengthValidation,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      labelText: AppString.confirmPasswordLabel,
-                    ),
-                    validator: Validatorless.multiple(
-                      [
-                        Validatorless.required(
-                          AppString.confirmPasswordValidation,
+                  StatefulBuilder(
+                    builder: (context, setState) => TextFormField(
+                      obscureText: !_showPassword,
+                      decoration: InputDecoration(
+                        labelText: AppString.confirmPasswordLabel,
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _showPassword = !_showPassword;
+                            });
+                          },
+                          icon: Icon(
+                            _showPassword
+                                ? Icons.visibility_off_rounded
+                                : Icons.visibility_rounded,
+                          ),
                         ),
-                        Validatorless.compare(
-                          _passwordEditingController,
-                          AppString.comparePasswordValidation,
-                        ),
-                      ],
+                      ),
+                      validator: Validatorless.multiple(
+                        [
+                          Validatorless.required(
+                            AppString.confirmPasswordValidation,
+                          ),
+                          Validatorless.compare(
+                            _passwordEditingController,
+                            AppString.comparePasswordValidation,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(
